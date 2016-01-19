@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block bodyClass %}{{ super() }} home-page{% endblock %}
+
+{# breadcrumbs are excluded from the homepage #}
+{% block breadcrumbs %}
+{% endblock %}
+
+{% block nav %}
+  <nav class='sam-main-nav sam-col-4'>
+    <a href='#welcome' class='sam-nav-header active'> Samantha Combs</a>
+    <ul class='sam-nav-sections'>
+      <li><a href='#about' class='sam-nav-section'>about</a></li>
+      <li><a href='#portfolio' class='sam-nav-section'>portfolio</a></li>
+      <li><a href='#contact' class='sam-nav-section'>contact</a></li>
+    </ul>
+    <div class='sam-nav-social'>
+      <a href='https://github.com/suhmantha1'  target='_blank'><i class="fa fa-github fa-2x"></i></a>
+      <a href='https://www.linkedin.com/in/samantha-combs-87a11855' target='_blank'><i class="fa fa-linkedin fa-2x"></i></a>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block main %}
+  <div class='sam-home-content sam-col-8'>
+    <div class='sam-section'>
+      <a name='welcome' class='sam-section-header'></a>
+      {{ welcome() }}
+    </div>
+    <div class='sam-section'>
+      <a name='about' class='sam-section-header'>
+        about me
+      </a>
+      {{ defaultArea(page, 'aboutSection') }}
+    </div>
+    <div class='sam-section'>
+      <a name='portfolio' class='sam-section-header'>websites i've worked on</a>
+      {{ defaultArea(page, 'portfolioSection') }}
+    </div>
+    <div class='sam-section'>
+      <a name='contact' class='sam-section-header'>contact me</a>
+      {{ defaultArea(page, 'contactSection') }}
+    </div>
+  </div>
+{% endblock %}

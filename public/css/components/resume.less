@@ -1,0 +1,34 @@
+/*
+		Styles specific to resume widget
+*/
+
+.sam-resume
+{
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	.padding(6, 2);
+
+	@media @compact
+	{
+		.padding(4,1);
+	}
+
+	a
+	{ 
+		.padding(2, 6);
+		.font-size(1.2);
+		font-weight: bold;
+		color: @blue;
+		text-decoration: none;
+		text-transform: uppercase;
+		border: 2px solid @blue;
+		.transition(all, 0.3s, ease-in-out);
+
+		&:hover
+		{
+			background-color: @blue;
+			color: @white;
+		}
+	}
+}

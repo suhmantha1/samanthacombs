@@ -1,0 +1,26 @@
+{#
+		The client widget pulls in snippets
+#}
+
+<div class='sam-client-list sam-grid'>
+	{% for client in item._client %}
+		<div class='sam-client sam-col-4'>
+			<a href='{{ client.url | e }}' target='_blank' class='sam-client-link'>
+				<div>{{ aposSingleton(client, 'thumbnail', 'slideshow', {
+						limit: 1,
+						noHeight: true,
+						aspectRatio: [1,1],
+						size: 'one-third',
+						minSize: [372,372],
+						userOptions: {
+					    disableTitles: true,
+					    disableDescriptions: true,
+					    disableCredits: true
+					  }
+					})
+				}}</div>
+				<p>{{ client.title | e }}</p>
+			</a>
+		</div>
+	{% endfor %}
+</div>

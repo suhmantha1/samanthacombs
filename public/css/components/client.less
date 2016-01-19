@@ -1,0 +1,59 @@
+/*
+	Styles specific to list of clients
+*/
+
+.sam-client-list
+{
+
+	.sam-client
+	{
+		display: inline-block;
+		.padding(1);
+
+		@media @compact
+		{
+			padding-right: 0;
+			padding-left: 0;
+		}
+
+		img{ opacity: 0; }
+		li.apos-slideshow-item
+		{
+			.height(17.0);
+			background-size: cover;
+			background-position: center;
+			filter: grayscale(100%);
+		  -webkit-filter: grayscale(100%);  /* For Webkit browsers */
+		  filter: gray;  /* For IE 6 - 9 */
+			.transition(all, 0.7s, ease-in-out);
+		}
+
+		.sam-client-link
+		{
+			display: inline-block;
+			.padding(1);
+			.padding-bottom(4);
+			border: 2px solid @black;
+			text-align: center;
+			text-decoration: none;
+			color: @black;
+			text-transform: uppercase;
+
+			p{ .padding-top(1); }
+
+			&:hover li.apos-slideshow-item
+			{ 
+				filter: grayscale(0%);
+		    -webkit-filter: grayscale(0%);  /* For Webkit browsers */
+		    filter: gray;  /* For IE 6 - 9 */
+			}
+
+			@media @compact
+			{
+				width: 100%;
+
+				.apos-slideshow-items { display: block; }
+			}
+		}
+	}
+}

@@ -1,0 +1,52 @@
+/*
+		Styles specific to contact form
+*/
+
+.apos-forms
+{
+	.apos-forms-title{ display: none; }
+
+	.apos-forms-field
+	{
+		label, input
+		{
+			display: inline-block;
+			width: 100%;
+		}
+
+		input, textarea
+		{
+			.max-width(50);
+			.height(5);
+			.padding(1);
+			.font-size(2.4);
+			.line-height(2.4);
+
+			&:focus
+			{
+				outline: none;
+				border: 1px solid black;	
+			}
+		}
+		textarea
+		{
+			.min-height(15);
+			width: 100%;
+			overflow: auto;
+			resize: none;
+		}
+	}
+
+	.apos-forms-submit
+	{
+		background-color: transparent;
+
+		&:hover{ font-weight: bold; }
+		&:focus{ outline: none; }
+	}
+}
+
+.apos-form-thanks-message
+{
+	h4{ display: none; }
+}

@@ -1,0 +1,11 @@
+{% macro defaultArea(page, name)%}
+  <div class="sam-default-area">
+    {{ aposArea(page, name, {
+        controls:[ 'style', 'bold', 'italic', 'Underline', 'Indent', 'Outdent', 'insertUnorderedList', 'createLink','unlink', 'slideshow', 'video', 'resume', 'clientWidget', 'forms', 'html' ],
+        styles: [
+          { value: 'p', label: 'normal' }
+        ]
+      })
+    }}
+  </div>
+{% endmacro %}

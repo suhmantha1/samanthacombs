@@ -1,0 +1,20 @@
+{#
+		Welcome Macro
+#}
+
+{% macro welcome() %}
+	<div class='sam-welcome'>
+		{{ aposSingleton(page, 'marqueeDefault', 'slideshow', 	{
+        limit: 1,
+        noHeight: true,
+        aspectRatio: [1.4,1],
+        minSize: [900,700],
+        userOptions: {
+          disableTitles: true,
+          disableDescriptions: true,
+          disableCredits: true
+        }
+      })
+    }}
+	</div>
+{% endmacro %}

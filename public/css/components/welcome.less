@@ -1,0 +1,31 @@
+/*
+		Styles specific to welcome section
+*/
+
+.sam-welcome
+{
+	filter: grayscale(100%);
+  -webkit-filter: grayscale(100%);  /* For Webkit browsers */
+  filter: gray;  /* For IE 6 - 9 */
+	.transition(all, 0.7s, ease-in-out);
+
+	&:hover
+	{
+		filter: grayscale(0%);
+    -webkit-filter: grayscale(0%);  /* For Webkit browsers */
+    filter: gray;  /* For IE 6 - 9 */
+	}
+
+	img{ opacity: 0; }
+	li.apos-slideshow-item
+	{
+		height: 90vh;
+		background-size: cover;
+		background-position: center;
+
+		@media @compact
+		{
+			height: 70vh;
+		}
+	}
+}

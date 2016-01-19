@@ -1,0 +1,80 @@
+/*
+		Styles specific to the main navigation
+*/
+
+.sam-main-nav
+{
+	height: 100vh;
+	vertical-align: top;
+	position: fixed;
+	float: left;
+	.padding(4);
+
+	@media @compact
+	{
+		position: relative;
+		float: none;
+		height: auto;
+		.padding(2);
+	}
+
+	a
+	{
+		text-decoration: none;
+		color: @black;
+	}
+
+	.sam-nav-header
+	{
+		.font-size(3.2);
+		font-weight: bold;
+	}
+
+	.sam-nav-sections
+	{
+		position: absolute;
+		.bottom(6);
+
+		@media @compact
+		{
+			display: none;
+		}
+	}
+
+	.sam-nav-section
+	{
+		display: inline-block;
+		.padding-top(1);
+		.padding-bottom(1);
+		.font-size(1.2);
+
+		&:hover{ color: @blue; }
+	}
+
+	.active
+	{
+		border-bottom: 2px solid @blue;
+		.line-height(5);
+	}
+
+	.sam-nav-social
+	{
+		display: inline-block;
+		width: 100%;
+		position: absolute;
+		.left(4);
+		.bottom(1.5);
+		.font-size(1.2);
+
+		a{ .margin-right(1); }
+
+		@media @compact
+		{
+			position: relative;
+			left: 0;
+			bottom: 0;
+			.margin-top(1);
+
+		}
+	}
+}

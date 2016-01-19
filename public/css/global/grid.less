@@ -1,0 +1,86 @@
+// ===============================================================
+// Grid System using Inline-block
+// with font-size:0 to have the columns bump up next to each other
+// ===============================================================
+
+/* Grid System */
+.col() {
+  display: inline-block;
+  .font-size(1.5); //need to reset default text size on columns
+  vertical-align: top;
+}
+.col(@columnSize) {
+  display: inline-block;
+  width: 100% / 12 * @columnSize;
+}
+
+.sam-grid
+{
+  display: inline-block;
+  width: 100%;
+  font-size: 0; //font-size:0 here makes the columns bump up next to one another
+
+  [class^='sam-col-']{ .col; }
+
+  .sam-col-1 { .col(1); }
+  .sam-col-2 { .col(2); }
+  .sam-col-3 { .col(3); }
+  .sam-col-4 { .col(4); }
+  .sam-col-5 { .col(5); }
+  .sam-col-6 { .col(6); }
+  .sam-col-7 { .col(7); }
+  .sam-col-8 { .col(8); }
+  .sam-col-9 { .col(9); }
+  .sam-col-10 { .col(10); }
+  .sam-col-11 { .col(11); }
+  .sam-col-12 { .col(12); }
+
+  @media @compact
+  {
+    .sam-col-1,
+    .sam-col-2,
+    .sam-col-3,
+    {
+      .col(6);
+    }
+
+    .sam-col-4,
+    .sam-col-5,
+    .sam-col-6,
+    .sam-col-7,
+    .sam-col-8,
+    .sam-col-9,
+    .sam-col-10,
+    .sam-col-11,
+    .sam-col-12
+    {
+      .col(12);
+    }
+  }
+
+  @media @small
+  {
+    .sam-col-4
+    {
+      .col(12); // 4 width column at 600px looked squashed -DKH
+    }
+  }
+
+  @media @smallest
+  {
+    [class^='sam-col-']
+    {
+     .col(12);
+    }
+  }
+}
+
+
+/* Layout */
+body{  overflow-x: hidden; }
+
+html
+{
+  //base rem is 10px
+  font-size: @root-font-size;
+}

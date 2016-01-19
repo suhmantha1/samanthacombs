@@ -1,0 +1,241 @@
+/* --------------------------------------
+  REM - PX Mixins
+--------------------------------------- */
+// give it a CSS property and a rem size
+// and it returns the px fallback and the rem
+.rem-to-px(@property: 'none', @size: 1)
+{
+  @prop: ~"@{property}";
+  @px: floor(@size * (@root-font-size * 1px));
+  @rem: @size * 1rem;
+  @{prop}: @px;
+  @{prop}: @rem;
+}
+.rem-to-pix(@property, @size) when (ispercentage(@size))
+{
+  @prop: ~"@{property}";
+  @{prop}: @size;
+}
+.rem-to-pix(@property, @size) when (isstring(@size))
+{
+  @prop: ~"@{property}";
+  @{prop}: auto;
+}
+
+
+//font properties
+.font-size(@size)
+{
+ .rem-to-px('font-size', @size);
+}
+.line-height(@size)
+{
+ .rem-to-px('line-height', @size);
+}
+
+//layout properties
+.width(@size) { .rem-to-px(@property: 'width', @size: @size) }
+.min-width(@size) { .rem-to-px(@property: 'min-width', @size: @size) }
+.max-width(@size) { .rem-to-px(@property: 'max-width', @size: @size) }
+
+.height(@size) { .rem-to-px(@property: 'height', @size: @size) }
+.min-height(@size) { .rem-to-px(@property: 'min-height', @size: @size) }
+.max-height(@size) { .rem-to-px(@property: 'max-height', @size: @size) }
+
+.padding(@top: 0, @right: 0, @bottom: 0, @left: 0)
+{
+   // all-in-one
+   & when (@top > 0) and (@bottom = 0) and (@right = 0) and (@left = 0) {
+     .rem-to-px('padding', @top);
+   }
+
+   // top and bottoms
+   & when (@top > 0) and (@bottom = 0) {
+     .rem-to-px('padding-top', @top);
+     .rem-to-px('padding-bottom', @top);
+   }
+   & when (@top > 0) and (@bottom > 0) {
+     .rem-to-px('padding-bottom', @top);
+     .rem-to-px('padding-bottom', @bottom);
+   }
+
+   // right and lefts
+   & when (@right > 0) and (@left = 0) {
+     .rem-to-px('padding-left', @right);
+     .rem-to-px('padding-right', @right);
+   }
+   & when (@right > 0) and (@left > 0){
+     .rem-to-px('padding-left', @left);
+     .rem-to-px('padding-right', @right);
+   }
+}
+.padding(@topBottom: 0, @rightLeft: 0)
+{
+  // top and bottoms
+   & when (@topBottom > 0){
+     .rem-to-px('padding-top', @topBottom);
+     .rem-to-px('padding-bottom', @topBottom);
+   }
+
+    // right and lefts
+   & when (@rightLeft > 0){
+     .rem-to-px('padding-left', @rightLeft);
+     .rem-to-px('padding-right', @rightLeft);
+   }
+}
+.padding-top(@p){ .rem-to-px('padding-top', @p); }
+.padding-right(@p){ .rem-to-px('padding-right', @p); }
+.padding-bottom(@p){ .rem-to-px('padding-bottom', @p); }
+.padding-left(@p){ .rem-to-px('padding-left', @p); }
+
+.margin(@top: 0, @right: 0, @bottom: 0, @left: 0)
+{
+   // all-in-one
+   & when (@top > 0) and (@bottom = 0) and (@right = 0) and (@left = 0) {
+     .rem-to-px('margin', @top);
+   }
+
+   // top and bottom
+   & when (@top > 0) and (@bottom = 0) {
+     .rem-to-px('margin-top', @top);
+     .rem-to-px('margin-bottom', @top);
+   }
+   & when (@top > 0) and (@bottom > 0) {
+     .rem-to-px('margin-top', @top);
+     .rem-to-px('margin-bottom', @bottom);
+   }
+
+   // left and right
+   & when (@right > 0) and (@left = 0) {
+     .rem-to-px('margin-right', @right);
+     .rem-to-px('margin-left', @right);
+   }
+   & when (@right > 0) and (@left > 0) {
+     .rem-to-px('margin-left', @left);
+     .rem-to-px('margin-right', @right);
+   }
+}
+.margin-top(@m){ .rem-to-px('margin-top', @m); }
+.margin-right(@m){ .rem-to-px('margin-right', @m); }
+.margin-bottom(@m){ .rem-to-px('margin-bottom', @m); }
+.margin-left(@m){ .rem-to-px('margin-left', @m); }
+
+.top(@o){ .rem-to-px('top', @o); }
+.right(@o){ .rem-to-px('right', @o); }
+.bottom(@o){ .rem-to-px(' bottom', @o); }
+.left(@o){ .rem-to-px('left', @o); }
+
+.add-font(@name, @url, @style: normal, @weight: normal)
+{
+  @font-face
+  {
+    font-family: @name;
+    font-weight: @weight;
+    font-style: @style;
+    src: url('@{url}.eot');
+    src: url('@{url}.eot?#iefix') format('embedded-opentype'),
+         url('@{url}.woff') format('woff'),
+         url('@{url}.ttf')  format('truetype'),
+         url('@{url}.svg#svgFontName') format('svg');
+  }
+
+  @selector: ~'.@{name}';
+
+  @{selector}
+  {
+    font-family: @name;
+  }
+}
+
+
+/* --------------------------------------
+  TRANSITION MIXINS
+--------------------------------------- */
+.transition(@property: all, @time: 0.2s, @ease:ease) {
+  transition: @property @time @ease;
+  -webkit-transition: @property @time @ease;
+     -moz-transition: @property @time @ease;
+      -webkit-backface-visibility: hidden;
+}
+
+.flip(){
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH";
+}
+
+
+/* --------------------------------------
+  STYLE MIXINS
+--------------------------------------- */
+
+.background-size(@size){
+  -webkit-background-size: @size;
+  -moz-background-size: @size;
+  -ms-background-size: @size;
+  -o-background-size: @size;
+  background-size: @size;
+}
+
+.box-shadow(@x-Offset, @y-Offset, @blurRadius, @spreadRadius, @color){
+  -moz-box-shadow:    @x-Offset @y-Offset @blurRadius @spreadRadius @color;
+  -webkit-box-shadow: @x-Offset @y-Offset @blurRadius @spreadRadius @color;
+  box-shadow:         @x-Offset @y-Offset @blurRadius @spreadRadius @color;
+}
+
+.oc-btn-background-color(@color) {
+  &::before
+  {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: .8;
+    background-color: @color;
+  }
+
+  &:hover
+  {
+    &:before {
+      background-color: darken(@color, 10%);
+      opacity: .9;
+    }
+  }
+}
+
+.oc-marquee-background-color(@color) {
+  &::before
+  {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: .8;
+    height: 500px;
+    background-color: @color;
+  }
+}
+
+.border-radius(@p) {
+  .rem-to-px('-webkit-border-radius', @p);
+  .rem-to-px('-moz-border-radius', @p);
+  .rem-to-px('-ms-border-radius', @p);
+  .rem-to-px('-o-border-radius', @p);
+  .rem-to-px('border-radius', @p);
+}
+
+.no-select(){
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

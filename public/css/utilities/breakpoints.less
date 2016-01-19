@@ -1,0 +1,21 @@
+// media query variables
+@fullUnit: 1160px;
+@narrowUnit: 1024px;
+@compactUnit: 768px;
+@smallUnit: 600px;
+@smallestUnit: 415px; // iPHone 6+ width is 414px
+
+
+@full: ~'(max-width:@{fullUnit})';
+@narrow: ~'(max-width:@{narrowUnit})';
+@compact: ~'(max-width:@{compactUnit})';
+@small: ~'(max-width:@{smallUnit})';
+@smallest: ~'(max-width:@{smallestUnit})';
+
+@full--up: ~'(min-width:@{narrowUnit} )';
+@narrow--up: ~'(min-width:@{compactUnit} )';
+
+
+//One off cases
+@small--homeMarqueeUnit: 500px;
+@small--homeMarquee: ~'(max-width:@{small--homeMarqueeUnit})';

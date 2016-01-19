@@ -1,0 +1,9 @@
+{#
+		Resume widget for adding pdf document
+#}
+
+<div class='sam-resume'>
+	{% if aposAreaFile(item, 'file') %}
+		<a href='{{aposFilePath(aposAreaFindFile({ area: item.file })) }}' target='_blank'>{{ item.title | e }}</a>
+	{% endif %}
+</div>

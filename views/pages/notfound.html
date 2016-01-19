@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block main %}
+  <h3>What! We don't have whatever you are looking for.</h3>
+{% endblock %}
+
+{# Redirect home #}
+<script>
+	$(location).attr('href', location.origin);
+</script>
