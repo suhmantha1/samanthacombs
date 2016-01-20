@@ -20,6 +20,7 @@
     "apostrophe-site": "0.5.x",
     "apostrophe-snippets": "0.5.x",
     "apostrophe-ui-2": "0.5.x",
-    "autosize": "^3.0.14"
+    "autosize": "^3.0.14",
+    "colors": "^1.1.2"
   }
 }

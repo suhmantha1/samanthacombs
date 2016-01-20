@@ -4,14 +4,33 @@
 
 .sam-client-list
 {
-
 	.sam-client
 	{
 		display: inline-block;
 		.padding(1);
 
+		@media @full
+		{
+			.col(6);
+		}
+		@media(max-width: 900px)
+		{ 
+			.col(12);
+
+			.sam-client-link{ width: 100%; }
+			.apos-slideshow-items { display: block; }
+		}
+
 		@media @compact
 		{
+			.col(6);
+			// padding-right: 0;
+			// padding-left: 0;
+		}
+
+		@media (max-width: 560px)
+		{
+			.col(12);
 			padding-right: 0;
 			padding-left: 0;
 		}
