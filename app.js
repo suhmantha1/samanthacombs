@@ -66,7 +66,7 @@ site.init({
     'apostrophe-snippets': {},
     'apostrophe-forms': {
       email: {
-        from: "Samantha Combs <sam@punkave.com>"
+        from: "Spacely Co <team@spacely.space>"
       },
       removeControls: ['sectionBreak', 'integerField', 'dateField', 'timeField']
     },
